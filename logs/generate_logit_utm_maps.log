@@ -1,0 +1,11 @@
+saved <repo>/results/logit_utm_connectivity_map.png
+saved <repo>/results/logit_utm_connectivity_map.svg
+saved <repo>/results/logit_utm_uncertainty_map.png
+saved <repo>/results/logit_utm_uncertainty_map.svg
+saved <repo>/results/logit_utm_panel.png
+saved <repo>/results/logit_utm_panel.svg
+=== logit UTM map summary ===
+grid=100x100 points=10000
+pred_p min=0.00001348 max=0.99768960
+interval_width min=0.00006339 max=0.98574941
+DONE

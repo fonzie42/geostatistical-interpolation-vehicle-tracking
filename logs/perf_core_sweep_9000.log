@@ -1,0 +1,15 @@
+>>> CPU sweep (image exageostatcpp:cpu), N=9000 dts=320 iters=20
+  [cpu] cores=1 354.492976772s iters=20
+  [cpu] cores=2 342.258541799s iters=20
+  [cpu] cores=4 275.547375674s iters=20
+  [cpu] cores=8 228.425914786s iters=20
+  [cpu] cores=10 220.766136103s iters=20
+>>> GPU runs (image exageostatcpp:gpu, RTX 3090)
+  [gpu] cores=1 240.578194431s iters=20
+  [gpu] cores=2 136.983970148s iters=20
+  [gpu] cores=4 90.863971767s iters=20
+  [gpu] cores=8 99.846218292s iters=20
+  [gpu] cores=10 230.439329077s iters=20
+>>> done -> results/perf_core_sweep.csv
+>>> For the thesis: plot seconds vs cores (speedup = t(1)/t(c), efficiency =
+    speedup/c), and the CPU-best vs GPU bar. Repeat at a few N for a size curve.

@@ -1,0 +1,15 @@
+=== Task 7 UTM logit variogram ===
+csv=data/delta_0.05_logit_utm.csv
+sample=2500 pairs=3123750 maxh=300.0 km
+data var=5.334640
+empirical omni max=5.354213
+theta=(6.34485611,19.18492718,0.54733473,0.00000100)
+directional max semivariance:
+  0 deg (E-W): 6.228150
+  45 deg: 6.077389
+  90 deg (N-S): 5.319370
+  135 deg: 5.120198
+directional max/min ratio=1.216
+saved results/banca/variogram_utm_logit.png
+saved results/banca/variogram_utm_logit.svg
+DONE

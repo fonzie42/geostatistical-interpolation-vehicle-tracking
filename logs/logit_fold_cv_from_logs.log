@@ -1,0 +1,26 @@
+logit UTM per-fold-theta CV from ExaGeoStat MLE logs
+global comparison theta=(6.34485611,19.18492718,0.54733473,0.00000100)
+  fold 01 N= 249 theta=(6.533831,19.185718,0.551015,0.000001) iters=198 loglik=-8867.363142 RMSE local=0.241641 global=0.241687 MAE local=0.193462 global=0.193587
+  fold 02 N=  15 theta=(6.234359,18.764931,0.549356,0.000001) iters=206 loglik=-9232.610353 RMSE local=0.126166 global=0.124293 MAE local=0.110887 global=0.109050
+  fold 03 N= 395 theta=(6.116573,18.001794,0.549886,0.000001) iters=224 loglik=-8602.594472 RMSE local=0.336929 global=0.338833 MAE local=0.289463 global=0.290825
+  fold 04 N= 852 theta=(6.509365,19.151001,0.551254,0.000001) iters=134 loglik=-7807.960319 RMSE local=0.331125 global=0.330934 MAE local=0.290041 global=0.289932
+  fold 05 N= 799 theta=(6.349015,18.520402,0.562363,0.000001) iters=124 loglik=-7888.150963 RMSE local=0.353515 global=0.353757 MAE local=0.319843 global=0.319935
+  fold 06 N= 463 theta=(5.564243,15.257141,0.593995,0.000001) iters=199 loglik=-8400.887004 RMSE local=0.348196 global=0.335684 MAE local=0.288223 global=0.276232
+  fold 07 N=1789 theta=(6.931999,19.523210,0.546334,0.000001) iters=95 loglik=-6425.725476 RMSE local=0.282209 global=0.282273 MAE local=0.233983 global=0.234029
+  fold 08 N= 839 theta=(6.886310,27.840846,0.493561,0.000001) iters=144 loglik=-7596.972287 RMSE local=0.329485 global=0.325075 MAE local=0.277459 global=0.275692
+
+=== weighted ===
+  N=5401
+  per-fold theta: RMSE=0.315173 MAE=0.268778 bias=-0.041623
+    pred_range=[0.001184,0.961442] var_range=[1.306434,6.931981]
+    cov50=56.79%
+    cov80=85.30%
+    cov90=89.48%
+    cov95=91.56%
+  global theta: RMSE=0.313578 MAE=0.267588 bias=-0.044644
+    pred_range=[0.001064,0.961175] var_range=[1.441113,6.344857]
+    cov50=56.36%
+    cov80=85.11%
+    cov90=89.61%
+    cov95=91.58%
+  leakage delta: RMSE global-minus-local=-0.001595 (-0.51%)
