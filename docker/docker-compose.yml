@@ -1,0 +1,125 @@
+version: '3.8'
+
+services:
+  # CPU-only service (works on all platforms)
+  exageostat-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: exageostatcpp:cpu
+    container_name: exageostat-cpu
+    hostname: exageostat-cpu
+    # Platform can be overridden: linux/amd64 (x86_64) or linux/arm64 (Apple Silicon)
+    # Note: linux/amd64 recommended for numerical stability
+    platform: linux/amd64
+
+    # Resource limits (adjust based on your system)
+    deploy:
+      resources:
+        limits:
+          cpus: '8'
+          memory: 16G
+        reservations:
+          cpus: '4'
+          memory: 8G
+
+    # Volume mounts for data persistence
+    volumes:
+      # Mount local data directory
+      - ./data:/app/data
+      # Mount local logs directory
+      - ./logs:/app/logs
+      # Mount local results directory
+      - ./results:/app/results
+
+    # Environment variables (customize as needed)
+    environment:
+      # ExaGeoStatCPP settings
+      - EXAGEOSTAT_LOG_LEVEL=standard
+      - EXAGEOSTAT_CORES=8
+      # StarPU runtime settings
+      - STARPU_NCPU=8
+      - STARPU_WORKERS_NOBIND=1
+      - STARPU_SILENT=0
+      # MPI settings
+      - OMPI_ALLOW_RUN_AS_ROOT=1
+      - OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+
+    # Default command (can override with docker-compose run)
+    command: ["help"]
+
+  # GPU-enabled service (requires NVIDIA GPU and nvidia-docker)
+  exageostat-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    image: exageostatcpp:gpu
+    container_name: exageostat-gpu
+    hostname: exageostat-gpu
+    platform: linux/amd64
+
+    # GPU support configuration
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, compute, utility]
+        limits:
+          cpus: '16'
+          memory: 32G
+
+    # Volume mounts for data persistence
+    volumes:
+      # Mount local data directory
+      - ./data:/app/data
+      # Mount local logs directory
+      - ./logs:/app/logs
+      # Mount local results directory
+      - ./results:/app/results
+
+    # Environment variables (customize as needed)
+    environment:
+      # ExaGeoStatCPP settings
+      - EXAGEOSTAT_LOG_LEVEL=standard
+      - EXAGEOSTAT_CORES=16
+      - EXAGEOSTAT_GPUS=1
+      # NVIDIA/CUDA settings
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      # StarPU runtime settings (with GPU)
+      - STARPU_NCPU=16
+      - STARPU_NCUDA=1
+      - STARPU_WORKERS_NOBIND=1
+      - STARPU_SILENT=0
+      # MPI settings
+      - OMPI_ALLOW_RUN_AS_ROOT=1
+      - OMPI_ALLOW_RUN_AS_ROOT_CONFIRM=1
+
+    # Keep container running for interactive use
+    stdin_open: true
+    tty: true
+
+    # Default command (can override with docker-compose run)
+    command: ["help"]
+
+# Create named volumes for persistent data
+volumes:
+  data:
+    driver: local
+  logs:
+    driver: local
+  results:
+    driver: local
+
+# Network configuration (optional)
+networks:
+  default:
+    name: exageostat-network
+    driver: bridge

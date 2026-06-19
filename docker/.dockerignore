@@ -1,0 +1,124 @@
+# ExaGeoStatCPP Docker Ignore File
+# Excludes files from Docker build context to optimize build speed and image size
+
+# Build artifacts and binaries
+bin/
+build/
+installdir/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+CTestTestfile.cmake
+Testing/
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-*
+.project
+.cproject
+.settings/
+
+# Documentation build artifacts
+docs/html/
+docs/latex/
+docs/doxygen/
+docs/_build/
+*.pdf
+
+# Test outputs and logs
+*.log
+logs/
+results/
+data/
+*.out
+*.err
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+
+# Python artifacts (for R/Python interfaces)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+.eggs/
+.pytest_cache/
+
+# R artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rcheck/
+*.tar.gz
+
+# MacOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux specific
+*~
+
+# Node modules (if any)
+node_modules/
+
+# Coverage reports
+coverage/
+*.gcda
+*.gcno
+*.gcov
+
+# Profiling data
+*.prof
+gmon.out
+perf.data*
+
+# Docker files (don't include other images)
+*.tar
+docker-compose.override.yml
+
+# CI/CD artifacts
+.circleci/
+.travis.yml
+.gitlab-ci.yml
+
+# Large data files (examples)
+*.csv
+*.dat
+*.nc
+*.hdf5
+*.h5
+
+# Compiled documentation
+README.pdf
+USER_MANUAL.pdf
