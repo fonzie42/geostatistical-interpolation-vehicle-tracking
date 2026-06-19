@@ -1,0 +1,9 @@
+# Python dependencies for the preprocessing, CV, and figure scripts.
+# Pinned to the versions used to produce the thesis figures and tables.
+matplotlib==3.9.4
+numpy==2.0.2
+polars==1.36.1
+pyarrow==21.0.0
+pyproj==3.6.1
+scipy==1.13.1
+seaborn==0.13.2
