@@ -1,0 +1,40 @@
+[0;32m======================================[0m
+[0;32mExaGeoStatCPP Container[0m
+[0;32m======================================[0m
+[0;34mSystem Information:[0m
+  Working Directory: /app/ExaGeoStatCPP/bin
+  Available CPU Cores: 14
+  Total Memory: 17Gi
+[1;33m  GPU Support: Disabled (CPU-only mode)[0m
+[0;32m======================================[0m
+
+[0;34mExecuting custom command: Rscript /app/data/predict.R --train /app/data/cv_folds_detrended/fold_02_train.csv --test /app/data/cv_folds_detrended/fold_02_test.csv --theta 1.646:4.288:0.456:0.001 --dts 320 --output /app/vdir/cv/cv_universal_fold_02.csv[0m
+Loading required package: assertthat
+Reading training data: /app/data/cv_folds_detrended/fold_02_train.csv 
+  Training points: 5386 
+  Theta parameters: 1.646 4.288 0.456 0.001 
+  Kernel: univariate_matern_nuggets_stationary 
+Reading test locations: /app/data/cv_folds_detrended/fold_02_test.csv 
+  Prediction points: 15 
+Initializing ExaGeoStatCPP hardware...
+[starpu][check_bus_config_file] No performance model for the bus, calibrating...
+[starpu][check_bus_config_file] ... done
+		 ** Initialize ExaGeoStat hardware **
+Running Kriging prediction...
+		 ** ExaGeoStat data Prediction **
+		 	- Number of Z Miss: 15
+		 	- Number of Z observations: 5386
+		 	---- Using Prediction Function MSPE ----
+		 		- Estimated Theta (1.646000, 4.288000, 0.456000, 0.001000)		 
+Computing Kriging variances in R...
+  Matérn params: sigma2= 1.646  beta= 4.288  nu= 0.456  nugget= 0.001 
+  Building C22 ( 5386 x 5386 ) ... done ( 4.984 s)
+  Cholesky factorization of C22 ... done ( 2.059 s)
+  Computing variances ( 15  points, batch_size= 500 ) ... 
+    Processed 15 / 15 points
+  Done ( 0.18 s)
+  Variance range: [ 0.05239304 , 0.1541461 ]
+Writing predictions to: /app/vdir/cv/cv_universal_fold_02.csv 
+Done. Predictions: 15 points
+  Prediction range: [ -0.6853644 , 0.1013399 ]
+  Variance range:   [ 0.05239304 , 0.1541461 ]

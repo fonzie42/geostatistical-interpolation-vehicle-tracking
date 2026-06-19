@@ -1,0 +1,41 @@
+[0;32m======================================[0m
+[0;32mExaGeoStatCPP Container[0m
+[0;32m======================================[0m
+[0;34mSystem Information:[0m
+  Working Directory: /app/ExaGeoStatCPP/bin
+  Available CPU Cores: 12
+  Total Memory: 17Gi
+[1;33m  GPU Support: Disabled (CPU-only mode)[0m
+[0;32m======================================[0m
+
+[0;34mExecuting custom command: Rscript /app/data/predict.R --train /app/data/delta_0.05_detrended.csv --theta 1.646:4.288:0.456:0.001 --grid-res 100 --dts 320 --output /app/vdir/predictions/predictions_rs_detrended.csv[0m
+Loading required package: assertthat
+Reading training data: /app/data/delta_0.05_detrended.csv 
+  Training points: 5401 
+  Theta parameters: 1.646 4.288 0.456 0.001 
+  Kernel: univariate_matern_nuggets_stationary 
+  Prediction points: 10000 
+Initializing ExaGeoStatCPP hardware...
+[starpu][check_bus_config_file] No performance model for the bus, calibrating...
+[starpu][check_bus_config_file] ... done
+		 ** Initialize ExaGeoStat hardware **
+Running Kriging prediction...
+		 ** ExaGeoStat data Prediction **
+		 	- Number of Z Miss: 10000
+		 	- Number of Z observations: 5401
+		 	---- Using Prediction Function MSPE ----
+		 		- Estimated Theta (1.646000, 4.288000, 0.456000, 0.001000)		 
+Computing Kriging variances in R...
+  Matérn params: sigma2= 1.646  beta= 4.288  nu= 0.456  nugget= 0.001 
+  Building C22 ( 5401 x 5401 ) ... done ( 5.145 s)
+  Cholesky factorization of C22 ... done ( 2.137 s)
+  Computing variances ( 10000  points, batch_size= 500 ) ... 
+    Processed 500 / 10000 points
+    Processed 5500 / 10000 points
+    Processed 10000 / 10000 points
+  Done ( 23.943 s)
+  Variance range: [ 0.003549779 , 1.197904 ]
+Writing predictions to: /app/vdir/predictions/predictions_rs_detrended.csv 
+Done. Predictions: 10000 points
+  Prediction range: [ -0.8161155 , 0.5088333 ]
+  Variance range:   [ 0.003549779 , 1.197904 ]

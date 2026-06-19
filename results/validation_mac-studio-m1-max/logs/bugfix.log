@@ -1,0 +1,40 @@
+[0;32m======================================[0m
+[0;32mExaGeoStatCPP Container[0m
+[0;32m======================================[0m
+[0;34mSystem Information:[0m
+  Working Directory: /app/ExaGeoStatCPP/bin
+  Available CPU Cores: 10
+  Total Memory: 7.7Gi
+[1;33m  GPU Support: Disabled (CPU-only mode)[0m
+[0;32m======================================[0m
+
+[0;34mExecuting custom command: Rscript /app/data/predict.R --train /app/data/train_test4.csv --test /app/data/test_test4.csv --theta 1.0:0.1:0.5:0.01 --dts 50 --output /app/vdir/predictions/bugfix.csv[0m
+Loading required package: assertthat
+Reading training data: /app/data/train_test4.csv 
+  Training points: 100 
+  Theta parameters: 1 0.1 0.5 0.01 
+  Kernel: univariate_matern_nuggets_stationary 
+Reading test locations: /app/data/test_test4.csv 
+  Prediction points: 20 
+Initializing ExaGeoStatCPP hardware...
+[starpu][check_bus_config_file] No performance model for the bus, calibrating...
+[starpu][check_bus_config_file] ... done
+		 ** Initialize ExaGeoStat hardware **
+Running Kriging prediction...
+		 ** ExaGeoStat data Prediction **
+		 	- Number of Z Miss: 20
+		 	- Number of Z observations: 100
+		 	---- Using Prediction Function MSPE ----
+		 		- Estimated Theta (1.000000, 0.100000, 0.500000, 0.010000)		 
+Computing Kriging variances in R...
+  Matérn params: sigma2= 1  beta= 0.1  nu= 0.5  nugget= 0.01 
+  Building C22 ( 100 x 100 ) ... done ( 0.02 s)
+  Cholesky factorization of C22 ... done ( 0.004 s)
+  Computing variances ( 20  points, batch_size= 500 ) ... 
+    Processed 20 / 20 points
+  Done ( 0.02 s)
+  Variance range: [ 0.2898533 , 0.8326036 ]
+Writing predictions to: /app/vdir/predictions/bugfix.csv 
+Done. Predictions: 20 points
+  Prediction range: [ -0.7766462 , 0.7709418 ]
+  Variance range:   [ 0.2898533 , 0.8326036 ]
